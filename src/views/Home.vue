@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <file-browser></file-browser>
+    <div class="file-browser">
+      <file-browser></file-browser>
+    </div>
   </div>
 </template>
 

@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "browser": "git+https://github.com/storj/browser",
+    "browser": "git+https://github.com/storj/browser#68d0eb709db815e5290f48742f34f47aef168cce",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
