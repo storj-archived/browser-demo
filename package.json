@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.866.0",
-    "browser": "git+https://github.com/storj/browser#daed62ec2e3e6220348ebe6d114821f37b42ccd2",
+    "browser": "../browser",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
