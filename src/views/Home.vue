@@ -41,12 +41,14 @@
       <div v-else>
         <file-browser></file-browser>
       </div>
+      <object-map></object-map>
     </div>
   </div>
 </template>
 
 <script>
 import { FileBrowser } from "browser";
+import ObjectMap from "../components/ObjectMap";
 import S3 from "aws-sdk/clients/s3";
 
 export default {
@@ -62,7 +64,8 @@ export default {
     generated: false
   }),
   components: {
-    FileBrowser
+    FileBrowser,
+    ObjectMap,
   },
   computed: {
     submitEnabled() {
