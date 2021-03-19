@@ -1,0 +1,265 @@
+<template>
+<div class="container-fluid">
+  <h1>test</h1>
+  <div class="row">
+
+    <div class="col-lg-8 col-xl-9 bg-grey order-2 order-lg-1">
+
+      <!-- <div class="row d-none d-lg-block mb-4">
+        <div class="col text-center">
+          <a href="http://tardigrade.io/"><img src="{{Base}}/static/img/logo.svg" class="logo" alt="Logo"></a>
+          <p class="file-title-top text-center">{{Data.Key}}</p>
+        </div>
+      </div> -->
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-xl-9">
+          <div class="card p-3 p-lg-5">
+            <div class="row">
+              <div class="col text-center mb-4 mt-3 mt-lg-0">
+                <h6>Real-time Distribution of <span class="text-muted file-title-distribution">{{Data.Key}}</span> on Tardigrade</h6>
+                <div id="smallFileMessage" class="row flex-nowrap text-left">
+                  <p class="mb-0">Files under 4kb are too small to distribute on the network. They are stored as metadata on the satellite you use with the same level of encryption as any other file.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div id="mapid" class="col-12 col-lg-8 text-center map">
+                <div id="spinner" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <!-- Map is loaded here -->
+              </div>
+              <div class="col-12 col-lg-4 text-center text-lg-left">
+                <p class="mt-4 justify-content-lg-start status">
+                  <strong>Status:</strong>
+                  <span id="collectingPieces">Collecting pieces...</span>
+                  <span id="readyForDownload">Ready for download</span>
+                </p>
+                <p class="mt-4"><strong>File Size:</strong> <span>{{Data.Size}}</span></p>
+                <p id="pieces" class="mt-4"><strong>File Pieces:</strong> <span id="piecesNumber"></span></p>
+                <p id="piecesMessage">Due to fluctuations in the network the number of pieces displayed for your file may change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-xl-8 text-center py-5">
+          <h5 class="mb-3">You’re Downloading this File From All Over the World</h5>
+          <p>Tardigrade distributes pieces of each file to a global network of independent nodes, and then recompiles them securely on download.  This means your data isn't being stored in an unsafe, centralized data center. The map above shows the location of the pieces of the file you are about to download.</p>
+          <a href="https://tardigrade.io/how-it-works/" target="_blank" rel="noopener" class="btn btn-light btn-lg text-primary px-4 mt-2 mb-4">Learn More About Tardigrade</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="col-lg-4 col-xl-3 order-1 order-lg-2">
+      <div class="row mb-5 mt-3">
+        <div class="col-2">
+          <a href="http://tardigrade.io/" class="d-block d-lg-none mt-1"><img src="{{Base}}/static/img/logo.svg" class="logo-mobile" alt="Logo"></a>
+          <a href="?download" class="btn btn-outline-secondary d-none d-lg-inline-block" download><img src="{{Base}}/static/img/icon-download-blue.svg" alt="Download"></a>
+        </div>
+        <div class="col-10 text-right">
+          <a href="https://tardigrade.io/login" class="btn btn-outline-secondary">Sign In</a>
+          <a href="https://tardigrade.io/signup" class="btn btn-outline-primary">Sign Up</a>
+        </div>
+      </div>
+      <div class="row text-center text-lg-left">
+        <div class="col">
+          <div class="file">
+            <img src="{{Base}}/static/img/icon-file.svg" class="d-block d-lg-inline-block mx-auto" alt="File icon">
+            <h5 class="file-title-sidebar">{{Data.Key}}</h5>
+          </div>
+          <p class="mt-3">{{Data.Size}}</p>
+          <embed class="embed-responsive embed-responsive-4by3" id="pdfTag">
+          <img class="embed-responsive embed-responsive-4by3" id="imgTag" alt="preview image">
+          <video class="embed-responsive embed-responsive-4by3" id="videoTag" controls></video>
+          <audio class="embed-responsive embed-responsive-4by3" id="audioTag" controls></audio>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-4 col-lg-12">
+              <a href="?download" class="btn btn-primary btn-lg btn-block mb-3" download>Download <img src="{{Base}}/static/img/icon-download-white.svg" alt="Download" class="ml-2"></a>
+            </div>
+            <div class="col-12 col-sm-4 col-lg-12">
+              <button type="button" onclick="openModal()" class="btn btn-outline-primary btn-lg btn-block mb-5 border-2 btn-share">Share <img src="{{Base}}/static/img/icon-share.svg" alt="Share" class="ml-2"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</div>
+
+<!-- Share Modal -->
+<!-- <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center border-0 p-2 p-sm-4 p-md-5">
+      <div class="modal-header border-0">
+        <div class="copy-notification" id="copyNotification">
+          <p class="copy-notification-text">Link Copied!</p>
+        </div>
+        <h5 class="modal-title mx-auto" id="shareModalLabel">Share {{Data.Key}}</h5> -->
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      <!-- </div>
+      <div class="modal-body pt-0">
+        <p>Just copy and paste the link below to share this file.</p>
+        <input class="form-control form-control-lg mt-4 input-url" type="url" id="url" readonly>
+        <button type="button" name="copy" class="btn btn-light btn-copy" onclick="copy()">Copy</button>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal" onclick="closeModal()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div> -->
+</template>
+
+<script>
+import Hero from '../../../vortex/ui/src/components/Hero.vue'
+export default {
+  components: { Hero },
+  name: "ObjectMap",
+  data: () => ({
+    DATA: {
+      Key: "testFile.txt",
+      Size: 400,
+    },
+    modal: document.getElementById('shareModal'),
+    input: document.getElementById('url'),
+  }),
+  methods: {
+    openModal() {
+      document.getElementById("backdrop").style.display = "block"
+      document.getElementById("shareModal").style.display = "block"
+      document.getElementById("shareModal").className += "show"
+      input.value = window.location.href;
+    },
+    closeModal() {
+      document.getElementById("backdrop").style.display = "none"
+      document.getElementById("shareModal").style.display = "none"
+      document.getElementById("shareModal").className += document.getElementById("shareModal").className.replace("show", "")
+      document.getElementById("copyNotification").style.display = "none"
+    },
+    copy() {
+      navigator.clipboard.writeText(input.value)
+      document.getElementById("copyNotification").style.display = "block"
+    },
+    async getLocationsSummary() {
+      const path = `${window.location.pathname}?locations`;
+      const request = {
+          method: 'GET',
+      };
+
+      request.headers = {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+      };
+
+      const response = await fetch(path, request);
+      const result = await response.json();
+
+      if (response.ok) {
+          return result
+      }
+
+      throw result
+    },
+    setupPreviewTag(id) {
+      const previewURL = `${window.location.origin}${window.location.pathname}?wrap=0`
+
+      document.getElementById(id).style.display = 'block'
+      document.getElementById(id).src = previewURL
+    },
+
+  },
+  created() {
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+
+    window.onload = async function () {
+      let mymap = L.map('mapid').setView([35, 10], 1.2);
+
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnJhbmRvbnN0b3JqIiwiYSI6ImNrZzlrcG1lcDByemgycm11MHBiZ2VhcGUifQ.kp78EgYfoLWzePO0f9cWVQ', {
+        maxZoom: 6,
+        minZoom: 1,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'boshevski/ckg4162p90kie19nzjdzxhwb9',
+        tileSize: 512,
+        zoomOffset: -1,
+        // this map option disables world wrapping. by default, it is false.
+        continuousWorld: false,
+        // this option disables loading tiles outside of the world bounds.
+        noWrap: true,
+        bounds: [
+            [-90, -180],
+            [90, 180]
+        ]
+      }).addTo(mymap);
+
+      let routes = []
+      try {
+        const summary = await getLocationsSummary();
+
+        routes = summary.locations;
+        document.getElementById('piecesNumber').innerText = summary.pieceCount;
+
+        if (!summary.pieceCount) {
+          document.getElementById('smallFileMessage').style.display = 'flex';
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+
+      circleOpts = {
+        color: '#2582ff',
+        fillColor: '#2582ff',
+        radius: 6000,
+        fillOpacity: 1,
+      };
+
+      for (let i = 0; i < routes.length; i++) {
+        r = routes[i];
+
+        L.circle([r.Latitude, r.Longitude], circleOpts).addTo(mymap);
+      }
+
+      document.getElementById('spinner').style.display = 'none';
+      document.getElementById('mapid').style.pointerEvents = 'auto';
+      document.getElementById('collectingPieces').style.display = 'none';
+      document.getElementById('readyForDownload').style.display = 'block';
+      document.getElementById('pieces').style.display = 'block';
+
+      const fileExtension = this.Data.Key.split('.').pop()
+
+      const pdfExtensions = 'pdf';
+      const imageExtensions = ['bmp', 'svg', 'jpg', 'jpeg', 'png', 'ico', 'gif'];
+      const videoExtensions = ['m4v', 'mp4', 'webm'];
+      const audioExtensions = ['mp3', 'wav', 'ogg'];
+
+      switch (true) {
+        case fileExtension === pdfExtensions:
+          setupPreviewTag('pdfTag');
+          break;
+        case imageExtensions.includes(fileExtension):
+          setupPreviewTag('imgTag');
+          break;
+        case videoExtensions.includes(fileExtension):
+          setupPreviewTag('videoTag');
+          break;
+        case audioExtensions.includes(fileExtension):
+          setupPreviewTag('audioTag');
+          break;
+        default:
+      }
+    }
+  },
+}
+</script>
