@@ -9,6 +9,7 @@
   "dependencies": {
     "aws-sdk": "^2.866.0",
     "browser": "../browser",
+    "ramda": "^0.27.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
